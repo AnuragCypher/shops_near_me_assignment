@@ -1,0 +1,44 @@
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <h1>Finding Nearest Shops</h1>
+
+    <form method="post" action="./">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input type="submit" value="Search" />
+    </form>
+
+    {% if shops %}
+    <h2>Shops near you</h2>
+    <ul>
+        {% for shop in shops %}
+        <li><b>{{ shop.name }}</b> <b>,</b> <b>distance</b>: {{ shop.distance }} <b>,</b> <b>lat</b>: {{shop.latitude}} <b>,</b> <b>lon</b>: {{shop.longitude}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div id="map" style="height: 700px;"></div>
+</body>
+<script>
+    // Create a Leaflet map centered on a lat lon location
+    var map = L.map('map').setView(["{{shop.latitude}}", "{{shop.longitude}}"], 13);
+  
+    // Add a tile layer to the map (optional)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+  
+    // Add a marker to the map at the lat lon location
+    // var marker = L.marker([location.latitude }}, {{ location.longitude }}]).addTo(map);
+    "{% for shop in shops %}"
+    L.marker(["{{ shop.latitude }}", "{{ shop.longitude }}"]).addTo(map);
+    "{% endfor %}"
+</script>
+
+
