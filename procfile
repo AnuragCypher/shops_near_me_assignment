@@ -1,2 +1,2 @@
-release: python manage.py migrate
+release: apt-get install gdal-bin -y && python manage.py migrate
 web: gunicorn shops_near_me.wsgi --logi-file=-
