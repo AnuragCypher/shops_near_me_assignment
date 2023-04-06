@@ -12,9 +12,9 @@ steps to run the application
   reg ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v PROJ_LIB /t REG_EXPAND_SZ /f /d "%PROJ_LIB%",
   
   (https://docs.djangoproject.com/en/4.1/ref/contrib/gis/install/) refer this link
-  
-2. install requirements.txt 
-3. activate the virtual environment
+ 
+2. create and activate the virtual environment
+3. install requirements.txt 
 4. run python manage.py migrate
 5. create superuser for using django-admin pannel to manage shops DB
 6. run the server python mange.py runserver
