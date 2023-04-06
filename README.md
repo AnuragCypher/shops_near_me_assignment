@@ -2,6 +2,7 @@
 steps to run the application
 1. your system needs to have geoDjango service available (install GDAL into your system, and set the path for couple of env variables)
   OSGeo4W installer for windows installation,
+  to set env variables in windows use these commands in terminal =>>
   set OSGEO4W_ROOT=C:\OSGeo4W64,
   set GDAL_DATA=%OSGEO4W_ROOT%\share\gdal,
   set PROJ_LIB=%OSGEO4W_ROOT%\share\proj,
