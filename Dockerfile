@@ -10,8 +10,10 @@ WORKDIR /shops_near_me
 # Copy requirements file
 COPY requirements.txt .
 
+RUN pip install pygdal=="$(gdal-config --version).*"
 # Install Python dependencies
 RUN pip install -r requirements.txt
+
 
 # Copy app files to container
 COPY . .
